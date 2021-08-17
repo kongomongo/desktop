@@ -107,7 +107,7 @@ public slots:
 
 private:
     Logger(QObject *parent = nullptr);
-    ~Logger();
+    ~Logger() override;
     QList<Log> _logs;
     bool _showTime = true;
     QFile _logFile;

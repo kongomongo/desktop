@@ -53,7 +53,7 @@ class SocketApi : public QObject
 
 public:
     explicit SocketApi(QObject *parent = nullptr);
-    virtual ~SocketApi();
+    ~SocketApi() override;
 
 public slots:
     void slotUpdateFolderView(Folder *f);
