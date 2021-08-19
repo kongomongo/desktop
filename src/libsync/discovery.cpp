@@ -506,7 +506,8 @@ void ProcessDirectoryJob::processFileAnalyzeRemoteInfo(
             // to update a placeholder with corrected size (-16 Bytes)
             // or, maybe, add a flag to the database - vfsE2eeSizeCorrected? if it is not set - subtract it from the placeholder's size and re-create/update a placeholder?
             const QueryMode serverQueryMode = [this, &dbEntry, &serverEntry]() {
-                if (dbEntry.isDirectory() && dbEntry._isE2eEncrypted) {
+                const bool isVfsModeOn = _discoveryData && _discoveryData->_syncOptions._vfs && _discoveryData->_syncOptions._vfs->mode() != Vfs::Off;
+                if (isVfsModeOn && dbEntry.isDirectory() && dbEntry._isE2eEncrypted) {
                     qint64 localFolderSize = 0;
                     const auto listFilesCallback = [this, &localFolderSize](const OCC::SyncJournalFileRecord &record) {
                         if (record.isFile()) {
