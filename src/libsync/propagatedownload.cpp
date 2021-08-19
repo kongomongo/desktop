@@ -407,11 +407,11 @@ qint64 GETEncryptedFileJob::writeToDevice(const QByteArray &data)
 
     const auto bytesRemaining = _contentLength - _processedSoFar - data.length();
 
-    if (bytesRemaining != 0 && bytesRemaining < OCC::CommonConstants::e2EeTagSize) {
-        // decryption is going to fail if last chunk does not include or does not equal to OCC::CommonConstants::e2EeTagSize bytes tag
-        // we may end up receiving packets beyond OCC::CommonConstants::e2EeTagSize bytes tag at the end
-        // in that case, we don't want to try and decrypt less than OCC::CommonConstants::e2EeTagSize ending bytes of tag, we will accumulate all the incoming data till the end
-        // and then, we are going to decrypt the entire chunk containing OCC::CommonConstants::e2EeTagSize bytes at the end
+    if (bytesRemaining != 0 && bytesRemaining < OCC::Constants::e2EeTagSize) {
+        // decryption is going to fail if last chunk does not include or does not equal to OCC::Constants::e2EeTagSize bytes tag
+        // we may end up receiving packets beyond OCC::Constants::e2EeTagSize bytes tag at the end
+        // in that case, we don't want to try and decrypt less than OCC::Constants::e2EeTagSize ending bytes of tag, we will accumulate all the incoming data till the end
+        // and then, we are going to decrypt the entire chunk containing OCC::Constants::e2EeTagSize bytes at the end
         _pendingBytes += QByteArray(data.constData(), data.length());
         _processedSoFar += data.length();
         if (_processedSoFar != _contentLength) {

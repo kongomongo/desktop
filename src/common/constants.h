@@ -17,7 +17,7 @@
 #include <QtGlobal>
 
 namespace OCC {
-namespace CommonConstants {
+namespace Constants {
     constexpr qint32 e2EeTagSize = 16;
 };
 };

@@ -111,7 +111,7 @@ private:
     quint64 _decryptedSoFar = 0;
     quint64 _totalSize = 0;
 };
-};
+}
 
 class OWNCLOUDSYNC_EXPORT ClientSideEncryption : public QObject {
     Q_OBJECT
