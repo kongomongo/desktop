@@ -434,7 +434,7 @@ QByteArray encryptPrivateKey(
     }
 
     QByteArray cipherTXT;
-    cipherTXT.reserve(clen + 16);
+    cipherTXT.reserve(clen + OCC::Constants::e2EeTagSize);
     cipherTXT.append(ctext, clen);
     cipherTXT.append(e2EeTag);
 
@@ -698,7 +698,7 @@ QByteArray encryptStringSymmetric(const QByteArray& key, const QByteArray& data)
     }
 
     QByteArray cipherTXT;
-    cipherTXT.reserve(clen + 16);
+    cipherTXT.reserve(clen + OCC::Constants::e2EeTagSize);
     cipherTXT.append(ctext, clen);
     cipherTXT.append(e2EeTag);
 
