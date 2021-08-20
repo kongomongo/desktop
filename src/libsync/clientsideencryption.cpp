@@ -1659,7 +1659,7 @@ bool EncryptionHelper::fileEncryption(const QByteArray &key, const QByteArray &i
 
     qCDebug(lcCse) << "Starting to encrypt the file" << input->fileName() << input->atEnd();
     while(!input->atEnd()) {
-        QByteArray data = input->read(blockSize);
+        const auto data = input->read(blockSize);
 
         if (data.size() == 0) {
             qCInfo(lcCse()) << "Could not read data from file";
