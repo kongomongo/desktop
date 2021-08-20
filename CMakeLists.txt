@@ -44,6 +44,13 @@ endif()
 
 include(Warnings)
 
+# Colored compiler output when using Ninja
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  add_compile_options(-fdiagnostics-color=always)
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  add_compile_options(-fcolor-diagnostics)
+endif()
+
 include(${CMAKE_SOURCE_DIR}/VERSION.cmake)
 # For config.h
 include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
